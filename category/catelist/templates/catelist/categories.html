@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+{% for category in categories %}
+<!--   {% if category.parent %}
+  	<p>Parent's name is: {{ category.parent }}</p>
+  {% endif %} -->
+  <p><a href="/category/{{ category.id }}/">{{ category.name }}</a></p>
+{% endfor %}
+
+<form action="/" method="post" class="form">
+{% csrf_token %}
+{% bootstrap_form form %}
+  <select name="select-parent">
+    <option value="0" selected></option>
+    {% for parent in categories %}
+    <option value="{{ parent.id }}">{{ parent.name }}</option>
+    {% endfor %}
+  <select>
+
+{% buttons %}
+  <button type="submit" class="btn btn-primary">
+    {% bootstrap_icon "star" %} Submit
+  </button>
+{% endbuttons %}
+</form>
+
+ 
+
+{% endblock %}

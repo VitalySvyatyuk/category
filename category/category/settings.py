@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'catelist',
     'bootstrap3',
 ]
 
@@ -55,7 +56,10 @@ ROOT_URLCONF = 'category.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # BASE_DIR + '/templates/',
+            BASE_DIR + '/catelist/templates/catelist/',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
