@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
 {% load bootstrap3 %}
+{% load mptt_tags %}
 
 {% block content %}
 
-{% for category in categories %}
-<!--   {% if category.parent %}
-  	<p>Parent's name is: {{ category.parent }}</p>
-  {% endif %} -->
-  <p><a href="/category/{{ category.id }}/">{{ category.name }}</a></p>
-{% endfor %}
+<ul>
+  {% recursetree nodes %}
+    <li>
+      {{ node.name }}
+      {% if not node.is_leaf_node %}
+        <ul class="children">
+          {{ children }}
+        </ul>
+      {% endif %}
+    </li>
+  {% endrecursetree %}
+</ul>
 
 <form action="/" method="post" class="form">
 {% csrf_token %}

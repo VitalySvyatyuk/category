@@ -21,5 +21,5 @@ from catelist import views as catelist_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', catelist_views.categories),
-    url(r'^category/', include('catelist.urls'))
+    url(r'^category/', include('catelist.urls')),
 ]
