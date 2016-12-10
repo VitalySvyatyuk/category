@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 
 from .models import Category
@@ -23,7 +23,7 @@ def categories(request):
             cat = Category(name=name)
             cat.save()
         else:
-            parent = Category.objects.get(id=parent)
+            parent = Category.objects.get_object_or_404(id=parent)
             cat = Category(name=name, parent=parent)
             cat.save()
         categories = Category.objects.all()
@@ -37,7 +37,7 @@ def categories(request):
                      {'categories': categories, 'form': form})
   
 def category(request, category_id):
-    category = Category.objects.get(pk=category_id)
-    form = EditCategoryForm()
+    category = Category.objects.get_object_or_404(pk=category_id)
+    form = CategoryForm()
     return render(request, 'category.html', 
                  {'category': category, 'form': form })

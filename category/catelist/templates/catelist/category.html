@@ -1,6 +1,29 @@
 {% extends 'bootstrap.html' %}
-
+{% load bootstrap3 %}
+{% load mptt_tags %}
 
 {% block bootstrap3_content %}
+
+<form action="/" method="post" class="form add-category" method="POST">
+{% csrf_token %}
+  <div class="form-group">
+    <h4>Add Category</h4>
+  </div>
+
+  {% bootstrap_form form %}
+
+  {% if already_exists %}
+    <p class="form-group error">Category {{ request.POST.name }} already exists. Please </p>
+  {% endif %}
+
+  {% buttons %}
+    <button type="submit" class="btn btn-error">
+      Remove Category
+    </button>
+    <button type="submit" class="btn btn-primary">
+      Save
+    </button>
+  {% endbuttons %}
+</form>
 
 {% endblock %}
