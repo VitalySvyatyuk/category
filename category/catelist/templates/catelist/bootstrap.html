@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block bootstrap3_title %}django-bootstrap3 template title{% endblock %}</title>
+  <title>{% block bootstrap3_title %}Categories{% endblock %}</title>
   {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -21,12 +21,12 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container top">
   {% block bootstrap3_content %}django-bootstrap3 template content{% endblock %}
 </div>
 {% if not 'javascript_in_head'|bootstrap_setting %}{% bootstrap_javascript jquery=True %}{% endif %}
 {% block bootstrap3_extra_script %}{% endblock %}
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"</script>
+
 </body>
 
 </html>

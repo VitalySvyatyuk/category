@@ -7,20 +7,16 @@
 <form action="/" method="post" class="form add-category" method="POST">
 {% csrf_token %}
   <div class="form-group">
-    <h4>Add Category</h4>
+    <h4>{{ category }}</h4>
   </div>
 
   {% bootstrap_form form %}
 
-  {% if already_exists %}
-    <p class="form-group error">Category {{ request.POST.name }} already exists. Please </p>
-  {% endif %}
-
   {% buttons %}
-    <button type="submit" class="btn btn-error">
-      Remove Category
+    <button type="submit" name="_delete" class="btn btn-danger">
+      Delete
     </button>
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" name="_save" class="btn btn-primary to-right">
       Save
     </button>
   {% endbuttons %}

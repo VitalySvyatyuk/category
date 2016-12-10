@@ -27,3 +27,15 @@ h4 {
 	margin-top: 5px; 
 	color: red;
 }
+
+.top {
+	margin-top: 10px;
+}
+
+.to-right {
+	float: right;
+}
+
+.category_id {
+	display: none;
+}
