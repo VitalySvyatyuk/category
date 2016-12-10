@@ -1,0 +1,20 @@
+{% extends 'bootstrap3/bootstrap3.html' %}
+{% load bootstrap3 %}
+
+{% load static %}
+
+{% block bootstrap3_extra_head %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+<div class="container">
+  {% block bootstrap3_content %}
+  {% endblock %}
+</div>
+
+
+{% block bootstrap3_extra_script %}
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"</script>
+{% endblock %}
+
+

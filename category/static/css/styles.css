@@ -1,0 +1,29 @@
+ul {
+	list-style-type: none;
+}
+
+.parent {
+	padding: 0;
+}
+
+.form {
+	max-width: 320px;
+}
+
+.form-group {
+	margin: 15px;
+}
+
+.add-category {
+	border: 1px solid #2e6da4;
+	border-radius: 15px;
+}
+
+h4 {
+	text-align: center;
+}
+
+.error {
+	margin-top: 5px; 
+	color: red;
+}
