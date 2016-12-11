@@ -17,14 +17,18 @@ def categories(request):
         categories = Category.objects.all() 
         for catname in categories:
             if str(catname) == str(name):
+                if '_save' in request.POST:
+                    form = CategoryForm()
+                    return render(request, 'categories.html', 
+                                 {'categories': categories, 'form': form})
                 form = CategoryForm(request.POST)
                 already_exists = True
                 return render(request, 'categories.html', 
                              {'categories': categories, 
                               'form': form,
                               'already_exists': already_exists})  
-        if 'select-parent' in request.POST:
-            parent = request.POST['select-parent']
+        if 'parent' in request.POST:
+            parent = request.POST['parent']
             if parent == "0":
                 cat = Category(name=name)
                 cat.save()
@@ -32,18 +36,13 @@ def categories(request):
                 parent = Category.objects.get(id=parent)
                 cat = Category(name=name, parent=parent)
                 cat.save()
-            print "Select-parent"
         elif '_save' in request.POST:
-            # cat = Category.objects.get(name=request.POST['name'])
-            print "Save"
-
+            cat = Category.objects.get(id=request.POST['category_id'])
+            cat.name = request.POST['name']
+            cat.save()
 
         categories = Category.objects.all()
         form = CategoryForm()
-        return render(request, 'categories.html', 
-                     {'categories': categories, 'form': form})
-
-
         return render(request, 'categories.html', 
                      {'categories': categories, 'form': form})
     else:
@@ -66,5 +65,4 @@ def category(request, category_id):
     form_data = {'name': category.name, 'category_id': category_id }
     form = EditCategoryForm(form_data)
     return render(request, 'category.html', 
-                 {'category': category,
-                  'form': form})
+                 {'category': category, 'form': form})
