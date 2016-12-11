@@ -29,6 +29,7 @@ def categories(request):
                               'already_exists': already_exists})  
         if 'parent' in request.POST:
             parent = request.POST['parent']
+            print parent
             if parent == "0":
                 cat = Category(name=name)
                 cat.save()
@@ -40,29 +41,19 @@ def categories(request):
             cat = Category.objects.get(id=request.POST['category_id'])
             cat.name = request.POST['name']
             cat.save()
-
-        categories = Category.objects.all()
-        form = CategoryForm()
-        return render(request, 'categories.html', 
-                     {'categories': categories, 'form': form})
     else:
-        categories = Category.objects.all()
-        form = CategoryForm()
-        return render(request, 'categories.html', 
-                     {'categories': categories, 'form': form})
+        pass
+    categories = Category.objects.all()
+    form = CategoryForm()
+    return render(request, 'categories.html', 
+                 {'categories': categories, 'form': form})
   
 def category(request, category_id):
     category = Category.objects.get(pk=category_id)
-    # if request.method == 'POST':
-    #     if '_save' in request.POST:
-    #         if category.name != request.POST['name']:
-    #             category.name = request.POST['name']
-    #             category.save()
-    #     elif '_delete' in request.POST:
-    #         category.delete()
-    #     return redirect(categories)
-
+    category_path = category.get_ancestors(ascending=False, include_self=True)
     form_data = {'name': category.name, 'category_id': category_id }
     form = EditCategoryForm(form_data)
+    print category_path
     return render(request, 'category.html', 
-                 {'category': category, 'form': form})
+                 {'category': category, 'form': form,
+                  'category_path': category_path})

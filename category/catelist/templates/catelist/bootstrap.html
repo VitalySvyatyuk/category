@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load bootstrap3 %}
+{% load django_bootstrap_breadcrumbs %}
 {% load static %}
 <html{% if request.LANGUAGE_CODE %} lang="{{ request.LANGUAGE_CODE }}"{% endif %}>
 
@@ -22,7 +23,11 @@
 
 <body>
 <div class="container top">
-  {% block bootstrap3_content %}django-bootstrap3 template content{% endblock %}
+  {% block breadcrumbs %}
+  {% endblock %}
+  {% block bootstrap3_content %}
+    {% render_breadcrumbs %}
+  {% endblock %}
 </div>
 {% if not 'javascript_in_head'|bootstrap_setting %}{% bootstrap_javascript jquery=True %}{% endif %}
 {% block bootstrap3_extra_script %}{% endblock %}

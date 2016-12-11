@@ -23,15 +23,7 @@
   <div class="form-group">
     <h4>Add Category</h4>
   </div>
-<!--   <div class="form-group">
-    {% bootstrap_label "Select Parent:" label_for="id_parent" %}
-    <select name="select-parent" id="id_parent" class="form-control">
-      <option value="0" selected></option>
-      {% for parent in categories %}
-      <option value="{{ parent.id }}">{{ parent.name }}</option>
-      {% endfor %}
-    </select>
-  </div> -->
+
   {% bootstrap_form form %}
 
   {% if already_exists %}

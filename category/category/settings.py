@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'catelist',
     'bootstrap3',
     'mptt',
+    'django_bootstrap_breadcrumbs',
 ]
 
 MIDDLEWARE = [
@@ -113,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = 'en-US'
 
 TIME_ZONE = 'Europe/Moscow'
 

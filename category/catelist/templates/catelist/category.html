@@ -1,8 +1,18 @@
 {% extends 'bootstrap.html' %}
 {% load bootstrap3 %}
+{% load django_bootstrap_breadcrumbs %}
 {% load mptt_tags %}
 
+{% block breadcrumbs %}
+  {% breadcrumb "Home" "/" %}
+  {% for step in category_path %}
+    {% breadcrumb step.name "category" step.id %}
+  {% endfor %}
+{% endblock %}
+
 {% block bootstrap3_content %}
+
+{% render_breadcrumbs %}
 
 <form action="/" method="post" class="form add-category" method="POST">
 {% csrf_token %}
