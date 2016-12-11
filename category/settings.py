@@ -25,7 +25,10 @@ SECRET_KEY = '2i2=r*7ww%+ws!p&0=n4nto#8rs)-%5vy7%i)eai*_16_v6w!t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'salty-beyond-37786.herokuapp.com',
+]
 
 
 # Application definition
