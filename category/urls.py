@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from catelist import views as catelist_views
-from catelist import settings
+from category import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
