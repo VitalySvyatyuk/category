@@ -17,12 +17,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from catelist import views as catelist_views
-from django import views as django_views
 from category import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^category/(?P<category_id>[0-9]+)/$', catelist_views.category, name="category"),
     url(r'^$', catelist_views.categories, name="categories"),
-    url(r'^static/(?P<path>.*)$', django_views.static.serve, {'document_root': settings.STATIC_ROOT}),
 ]
