@@ -26,7 +26,7 @@ SECRET_KEY = '2i2=r*7ww%+ws!p&0=n4nto#8rs)-%5vy7%i)eai*_16_v6w!t'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost',
+    '127.0.0.1',
     'salty-beyond-37786.herokuapp.com',
 ]
 
@@ -84,22 +84,22 @@ WSGI_APPLICATION = 'category.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',        
-    #     'NAME': 'category',        
-    #     'USER': 'postgres',        
-    #     'PASSWORD': 'postgres',        
-    #     'HOST': 'localhost',        
-    #     'PORT': '',        
-    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',        
-        'NAME': 'd4iolfbp9hssor',        
-        'USER': 'zrsezxnkbeatun',        
-        'PASSWORD': '87612103e4a22f83acf41b3f4df0f4ce71c3b1ee94e0e4ab7d20588362c771c7',        
-        'HOST': 'ec2-23-23-223-2.compute-1.amazonaws.com',        
+        'NAME': 'category',        
+        'USER': 'postgres',        
+        'PASSWORD': 'postgres',        
+        'HOST': 'localhost',        
         'PORT': '',        
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',        
+    #     'NAME': 'd4iolfbp9hssor',        
+    #     'USER': 'zrsezxnkbeatun',        
+    #     'PASSWORD': '87612103e4a22f83acf41b3f4df0f4ce71c3b1ee94e0e4ab7d20588362c771c7',        
+    #     'HOST': 'ec2-23-23-223-2.compute-1.amazonaws.com',        
+    #     'PORT': '',        
+    # }
 }
 
 

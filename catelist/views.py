@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 from django.template import RequestContext
 
@@ -6,6 +7,7 @@ from .forms import CategoryForm, EditCategoryForm
 
 
 def categories(request):
+    """Вьюха, обслуживающая главную стрицу. Принимает POST-запросы от обеих форм: с главной страницы и со страницы редактирования категории."""
     if request.method == 'POST':
         if '_delete' in request.POST:
             category = Category.objects.get(id=request.POST['category_id'])
@@ -49,6 +51,7 @@ def categories(request):
                  {'categories': categories, 'form': form})
   
 def category(request, category_id):
+    """Вьюха для отображения страницы редактирования категории. Не обрабатывает POST-запросы."""
     category = Category.objects.get(pk=category_id)
     category_path = category.get_ancestors(ascending=False, include_self=True)
     form_data = {'name': category.name, 'category_id': category_id }
