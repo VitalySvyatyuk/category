@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 from django.template import RequestContext
+from category import settings
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.views.decorators.cache import cache_page
 
 from .models import Category
 from .forms import CategoryForm, EditCategoryForm
 
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
+
+@cache_page(CACHE_TTL)
 def categories(request):
     """Вьюха, обслуживающая главную стрицу. Принимает POST-запросы от обеих форм: с главной страницы и со страницы редактирования категории."""
     if request.method == 'POST':
@@ -49,7 +55,8 @@ def categories(request):
     form = CategoryForm()
     return render(request, 'categories.html', 
                  {'categories': categories, 'form': form})
-  
+
+@cache_page(CACHE_TTL)
 def category(request, category_id):
     """Вьюха для отображения страницы редактирования категории. Не обрабатывает POST-запросы."""
     category = Category.objects.get(pk=category_id)
