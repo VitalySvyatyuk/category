@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'salty-beyond-37786.herokuapp.com',
+    'safe-badlands-97323.herokuapp.com',
 ]
 
 
@@ -165,4 +165,4 @@ CACHES = {
 
 CACHE_TTL = 60 * 15
 
-INTERNAL_IPS = ('127.0.0.1','localhost','salty-beyond-37786.herokuapp.com',)
+INTERNAL_IPS = ('127.0.0.1','localhost','safe-badlands-97323.herokuapp.com',)
